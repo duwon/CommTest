@@ -37,8 +37,8 @@
             this.mswThemaMode = new MaterialSkin.Controls.MaterialSwitch();
             this.mDividerTop = new MaterialSkin.Controls.MaterialDivider();
             this.MTabControl = new MaterialSkin.Controls.MaterialTabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabMain = new System.Windows.Forms.TabPage();
+            this.tabConfig = new System.Windows.Forms.TabPage();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.MTabControl.SuspendLayout();
             this.SuspendLayout();
@@ -143,8 +143,8 @@
             this.MTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MTabControl.Controls.Add(this.tabPage1);
-            this.MTabControl.Controls.Add(this.tabPage2);
+            this.MTabControl.Controls.Add(this.tabMain);
+            this.MTabControl.Controls.Add(this.tabConfig);
             this.MTabControl.Depth = 0;
             this.MTabControl.ImageList = this.imageList1;
             this.MTabControl.Location = new System.Drawing.Point(3, 60);
@@ -155,27 +155,26 @@
             this.MTabControl.Size = new System.Drawing.Size(1042, 698);
             this.MTabControl.TabIndex = 179;
             // 
-            // tabPage1
+            // tabMain
             // 
-            this.tabPage1.ImageKey = "main-menu.png";
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1034, 472);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabMain.ImageKey = "main-menu.png";
+            this.tabMain.Location = new System.Drawing.Point(4, 24);
+            this.tabMain.Name = "tabMain";
+            this.tabMain.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMain.Size = new System.Drawing.Size(1034, 670);
+            this.tabMain.TabIndex = 0;
+            this.tabMain.Text = "Main";
+            this.tabMain.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // tabConfig
             // 
-            this.tabPage2.ImageKey = "setting.png";
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1034, 670);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabConfig.ImageKey = "setting.png";
+            this.tabConfig.Location = new System.Drawing.Point(4, 24);
+            this.tabConfig.Name = "tabConfig";
+            this.tabConfig.Padding = new System.Windows.Forms.Padding(3);
+            this.tabConfig.Size = new System.Drawing.Size(1034, 670);
+            this.tabConfig.TabIndex = 1;
+            this.tabConfig.Text = "Config";
             // 
             // imageList1
             // 
@@ -222,8 +221,8 @@
         private MaterialSkin.Controls.MaterialSwitch mswThemaMode;
         private MaterialSkin.Controls.MaterialDivider mDividerTop;
         private MaterialSkin.Controls.MaterialTabControl MTabControl;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabMain;
+        private System.Windows.Forms.TabPage tabConfig;
         private System.Windows.Forms.ImageList imageList1;
     }
 }

@@ -12,6 +12,11 @@ namespace CommTest
         /// </summary>
         private readonly MaterialSkinManager materialSkinManager;
 
+        /// <summary>
+        /// 폼 - 설정
+        /// </summary>
+        private ConfigPage FormConfig { get; set; }
+
         public Main()
         {
             InitializeComponent();
@@ -34,6 +39,13 @@ namespace CommTest
             this.MaximumSize = new System.Drawing.Size(1048, 760);
             this.MinimumSize = new System.Drawing.Size(1048, 760);
 
+            // 서브 폼 로드
+            // 설정 페이지
+            FormConfig = new ConfigPage() { TopLevel = false };
+            FormConfig.DebugMessageEvent += new ConfigPage.DebugMessageHandler(PrintDebugMsg);
+            tabConfig.Controls.Add(FormConfig);
+            FormConfig.Show();
+
         }
 
         /// <summary>
@@ -43,7 +55,8 @@ namespace CommTest
         /// <param name="e"></param>
         private void Main_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
-
+            // 서브 폼 종료
+            FormConfig.Close();
         }
 
         /// <summary>
@@ -81,6 +94,18 @@ namespace CommTest
 
             mswThemaMode.Text = mswThemaMode.Checked ? "Light" : "Dark"; // 체크박스의 텍스트를 "Light" 또는 "Dark"로 설정
             new MaterialSnackBar($"{mswThemaMode.Text} mode selected.", 1000, "OK", true).Show(this); // MaterialSnackBar를 생성하여 "Light mode selected." 또는 "Dark mode selected." 메시지를 1초 동안 보여줌
+        }
+
+        private void PrintDebugMsg(string msg, bool IsVisible)
+        {
+            if (IsVisible)
+            {
+                //mlbDebugMsg.Text = msg;
+            }
+            else
+            {
+                //mlbDebugMsg.Text = "";
+            }
         }
     }
 }
