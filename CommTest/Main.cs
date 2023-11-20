@@ -13,9 +13,14 @@ namespace CommTest
         private readonly MaterialSkinManager materialSkinManager;
 
         /// <summary>
-        /// 폼 - 설정
+        /// 폼 - 설정 페이지
         /// </summary>
         private ConfigPage FormConfig { get; set; }
+
+        /// <summary>
+        /// 폼 - 시리얼 테스트 페이지
+        /// </summary>
+        private SerialPage FormSerial { get; set; }
 
         public Main()
         {
@@ -40,6 +45,12 @@ namespace CommTest
             this.MinimumSize = new System.Drawing.Size(1048, 760);
 
             // 서브 폼 로드
+            // 시리얼 테스트 페이지
+            FormSerial = new SerialPage() { TopLevel = false };
+            FormSerial.DebugMessageEvent += new SerialPage.DebugMessageHandler(PrintDebugMsg);
+            tabSerial.Controls.Add(FormSerial);
+            FormSerial.Show();
+
             // 설정 페이지
             FormConfig = new ConfigPage() { TopLevel = false };
             FormConfig.DebugMessageEvent += new ConfigPage.DebugMessageHandler(PrintDebugMsg);
