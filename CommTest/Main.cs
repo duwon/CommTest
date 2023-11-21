@@ -1,7 +1,7 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
-using System.Windows.Forms;
 using System;
+using System.Windows.Forms;
 
 namespace CommTest
 {
@@ -41,12 +41,12 @@ namespace CommTest
         private void Main_Load(object sender, System.EventArgs e)
         {
             // 폼 크기 결정
-            this.MaximumSize = new System.Drawing.Size(1048, 760);
-            this.MinimumSize = new System.Drawing.Size(1048, 760);
+            MaximumSize = new System.Drawing.Size(1048, 760);
+            MinimumSize = new System.Drawing.Size(1048, 760);
 
             // 서브 폼 로드
             // 시리얼 테스트 페이지
-            FormSerial = new SerialPage() { TopLevel = false };
+            FormSerial = new SerialPage() { TopLevel = false, IsLayoutHeader = false };
             FormSerial.DebugMessageEvent += new SerialPage.DebugMessageHandler(PrintDebugMsg);
             tabSerial.Controls.Add(FormSerial);
             FormSerial.Show();
@@ -77,7 +77,7 @@ namespace CommTest
         /// <param name="e"></param>
         private void MbtnClose_Click(object sender, System.EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void panelTOP_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -117,6 +117,13 @@ namespace CommTest
             {
                 //mlbDebugMsg.Text = "";
             }
+        }
+
+        private void MbtnOpenSerial_Click(object sender, EventArgs e)
+        {
+            SerialPage _SerialForm = new SerialPage() { IsLayoutHeader = true, StartPosition = FormStartPosition.WindowsDefaultLocation};
+            _SerialForm.DebugMessageEvent += new SerialPage.DebugMessageHandler(PrintDebugMsg);
+            _SerialForm.Show();
         }
     }
 }

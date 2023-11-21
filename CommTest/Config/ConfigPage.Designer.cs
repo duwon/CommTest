@@ -42,7 +42,7 @@
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.StatusAndActionBar_None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ConfigPage";
-            this.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Padding = new System.Windows.Forms.Padding(3, 0, 3, 4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "SerialPage";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConfigPage_FormClosing);

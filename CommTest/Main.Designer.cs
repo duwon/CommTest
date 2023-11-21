@@ -41,7 +41,9 @@
             this.tabSerial = new System.Windows.Forms.TabPage();
             this.tabConfig = new System.Windows.Forms.TabPage();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.MbtnOpenSerial = new MaterialSkin.Controls.MaterialButton();
             this.MTabControl.SuspendLayout();
+            this.tabMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // mlbProjectTitle
@@ -159,6 +161,7 @@
             // 
             // tabMain
             // 
+            this.tabMain.Controls.Add(this.MbtnOpenSerial);
             this.tabMain.ImageKey = "main-menu.png";
             this.tabMain.Location = new System.Drawing.Point(4, 24);
             this.tabMain.Name = "tabMain";
@@ -196,6 +199,26 @@
             this.imageList1.Images.SetKeyName(1, "serialport.png");
             this.imageList1.Images.SetKeyName(2, "setting.png");
             // 
+            // MbtnOpenSerial
+            // 
+            this.MbtnOpenSerial.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MbtnOpenSerial.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.MbtnOpenSerial.Depth = 0;
+            this.MbtnOpenSerial.HighEmphasis = true;
+            this.MbtnOpenSerial.Icon = null;
+            this.MbtnOpenSerial.Location = new System.Drawing.Point(720, 141);
+            this.MbtnOpenSerial.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.MbtnOpenSerial.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MbtnOpenSerial.Name = "MbtnOpenSerial";
+            this.MbtnOpenSerial.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.MbtnOpenSerial.Size = new System.Drawing.Size(70, 36);
+            this.MbtnOpenSerial.TabIndex = 1;
+            this.MbtnOpenSerial.Text = "Serial";
+            this.MbtnOpenSerial.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.MbtnOpenSerial.UseAccentColor = false;
+            this.MbtnOpenSerial.UseVisualStyleBackColor = true;
+            this.MbtnOpenSerial.Click += new System.EventHandler(this.MbtnOpenSerial_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -220,6 +243,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.MTabControl.ResumeLayout(false);
+            this.tabMain.ResumeLayout(false);
+            this.tabMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,6 +263,7 @@
         private System.Windows.Forms.TabPage tabSerial;
         private System.Windows.Forms.TabPage tabConfig;
         private System.Windows.Forms.ImageList imageList1;
+        private MaterialSkin.Controls.MaterialButton MbtnOpenSerial;
     }
 }
 
