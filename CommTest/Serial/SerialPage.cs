@@ -59,6 +59,7 @@ namespace CommTest
 
             // 로그 설정
             Log = new LogTextBox(mtbDebug);
+            MtbDebugMaxLines.TextChanged += new System.EventHandler(MtbDebugMaxLines_TextChanged);
             Log.IsWiteFile = false;
 
             // 시리얼 포트 연결
@@ -67,6 +68,9 @@ namespace CommTest
 
             // 자동 전송 타이머 설정
             timerAutoSend = new System.Threading.Timer(new System.Threading.TimerCallback(AutoSendText), null, 0, 1000);
+
+            // 디버그 창 설정
+            DebugMaxLines = 100;
 
             // Hex 및 Ascii Hint 입력
             MbtnText00.Hint = "0x12 0x23 0x34 0x56";
@@ -98,7 +102,7 @@ namespace CommTest
         private void SerialPage_FormClosing(object sender, FormClosingEventArgs e)
         {
             serialPort.Disconnect();
-            Log.Close();
+            Log?.Close();
             timerAutoSend.Dispose();
         }
 
@@ -142,17 +146,22 @@ namespace CommTest
                 if (serialPort.Connect(port, baudrate))
                 {
                     MbtnConnect.UseAccentColor = true;
-                    PrintDebugMsg($"{port} 연결되었습니다.", true);
+                    PrintDebugMsg($"{serialPort.PortName} 연결되었습니다.", true);
                 }
                 else
                 {
-                    PrintDebugMsg($"{port}가 이미 사용중입니다.", true);
+                    PrintDebugMsg($"{serialPort.PortName}가 이미 사용중입니다.", true);
                 }
             }
             else
             {
+                // 자동전송 해지
+                for (int i = 0; i < MbtnTextSend.Length; i++)
+                {
+                    MbtnTextSend[i].UseAccentColor = false;
+                }
                 serialPort.Disconnect();
-                PrintDebugMsg($"{port} 연결을 종료했습니다.", true);
+                PrintDebugMsg($"{serialPort.PortName} 연결을 종료했습니다.", true);
             }
 
             MbtnConnect.UseAccentColor = serialPort.IsOpen;
@@ -165,8 +174,8 @@ namespace CommTest
         /// <param name="msg"></param>
         private void PrintDebugMsg(string msg)
         {
-            Log.Write(msg, true);
-            DebugMessageEvent?.Invoke(msg, true);
+            Log.Write($"[{serialPort.PortName}] {msg}", true);
+            DebugMessageEvent?.Invoke($"[{serialPort.PortName}] {msg}", true);
         }
 
         /// <summary>
@@ -343,6 +352,7 @@ namespace CommTest
         {
             if (e.Button == MouseButtons.Left)
             {
+                mlbProjectTitle.Capture = false;
                 pHeader.Capture = false;
                 const int WM_NCLBUTTONDOWN = 0x00A1;
                 const int HTCAPTION = 2;
@@ -352,7 +362,34 @@ namespace CommTest
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
+        }
+
+        private int DebugMaxLines
+        {
+            set
+            {
+                Log.LimitLines = value;
+                MtbDebugMaxLines.Text = Log.LimitLines.ToString();
+            }
+            get => Log.LimitLines;
+        }
+
+        private void MtbDebugMaxLines_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DebugMaxLines = Convert.ToInt32(MtbDebugMaxLines.Text);
+            }
+            catch
+            {
+                PrintDebugMsg("Max line is not number.", true);
+            }
+        }
+
+        private void MswDebugIsWriteFile_CheckedChanged(object sender, EventArgs e)
+        {
+            Log.IsWiteFile = MswDebugIsWriteFile.Checked;
         }
     }
 }

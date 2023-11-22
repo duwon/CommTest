@@ -63,15 +63,17 @@
             this.MtbAutoSendInterval = new MaterialSkin.Controls.MaterialTextBox2();
             this.MbtnText01 = new MaterialSkin.Controls.MaterialTextBox();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
+            this.MswDebugIsWriteFile = new MaterialSkin.Controls.MaterialSwitch();
+            this.MtbDebugMaxLines = new MaterialSkin.Controls.MaterialTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.MswDebugIsAscii = new MaterialSkin.Controls.MaterialSwitch();
             this.MbtnDebugClear = new MaterialSkin.Controls.MaterialButton();
             this.pBody = new System.Windows.Forms.Panel();
             this.pHeader = new System.Windows.Forms.Panel();
-            this.BtnClose = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.mDividerTop = new MaterialSkin.Controls.MaterialDivider();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            this.mDividerTop = new MaterialSkin.Controls.MaterialDivider();
+            this.BtnClose = new System.Windows.Forms.Button();
+            this.mlbProjectTitle = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard1.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.materialCard3.SuspendLayout();
@@ -92,7 +94,7 @@
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(246, 121);
+            this.materialCard1.Size = new System.Drawing.Size(246, 116);
             this.materialCard1.TabIndex = 0;
             // 
             // MtbBaudrate
@@ -105,7 +107,7 @@
             this.MtbBaudrate.HideSelection = true;
             this.MtbBaudrate.Hint = "BAUDRATE";
             this.MtbBaudrate.LeadingIcon = null;
-            this.MtbBaudrate.Location = new System.Drawing.Point(141, 18);
+            this.MtbBaudrate.Location = new System.Drawing.Point(141, 11);
             this.MtbBaudrate.MaxLength = 32767;
             this.MtbBaudrate.MouseState = MaterialSkin.MouseState.OUT;
             this.MtbBaudrate.Name = "MtbBaudrate";
@@ -140,7 +142,7 @@
             this.McbSerialPort.Hint = "Port";
             this.McbSerialPort.IntegralHeight = false;
             this.McbSerialPort.ItemHeight = 43;
-            this.McbSerialPort.Location = new System.Drawing.Point(6, 17);
+            this.McbSerialPort.Location = new System.Drawing.Point(6, 10);
             this.McbSerialPort.MaxDropDownItems = 4;
             this.McbSerialPort.MouseState = MaterialSkin.MouseState.OUT;
             this.McbSerialPort.Name = "McbSerialPort";
@@ -157,7 +159,7 @@
             this.MbtnConnect.Depth = 0;
             this.MbtnConnect.HighEmphasis = true;
             this.MbtnConnect.Icon = null;
-            this.MbtnConnect.Location = new System.Drawing.Point(6, 75);
+            this.MbtnConnect.Location = new System.Drawing.Point(6, 68);
             this.MbtnConnect.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.MbtnConnect.MouseState = MaterialSkin.MouseState.HOVER;
             this.MbtnConnect.Name = "MbtnConnect";
@@ -430,7 +432,7 @@
             this.MbtnText08.Depth = 0;
             this.MbtnText08.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.MbtnText08.LeadingIcon = null;
-            this.MbtnText08.Location = new System.Drawing.Point(270, 345);
+            this.MbtnText08.Location = new System.Drawing.Point(270, 344);
             this.MbtnText08.MaxLength = 50;
             this.MbtnText08.MouseState = MaterialSkin.MouseState.OUT;
             this.MbtnText08.Multiline = false;
@@ -731,26 +733,62 @@
             // materialCard3
             // 
             this.materialCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard3.Controls.Add(this.MswDebugIsWriteFile);
+            this.materialCard3.Controls.Add(this.MtbDebugMaxLines);
             this.materialCard3.Controls.Add(this.label1);
             this.materialCard3.Controls.Add(this.MswDebugIsAscii);
             this.materialCard3.Controls.Add(this.MbtnDebugClear);
             this.materialCard3.Depth = 0;
             this.materialCard3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard3.Location = new System.Drawing.Point(7, 303);
+            this.materialCard3.Location = new System.Drawing.Point(7, 261);
             this.materialCard3.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard3.Name = "materialCard3";
             this.materialCard3.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard3.Size = new System.Drawing.Size(246, 78);
+            this.materialCard3.Size = new System.Drawing.Size(246, 120);
             this.materialCard3.TabIndex = 185;
+            // 
+            // MswDebugIsWriteFile
+            // 
+            this.MswDebugIsWriteFile.AutoSize = true;
+            this.MswDebugIsWriteFile.Depth = 0;
+            this.MswDebugIsWriteFile.Location = new System.Drawing.Point(7, 25);
+            this.MswDebugIsWriteFile.Margin = new System.Windows.Forms.Padding(0);
+            this.MswDebugIsWriteFile.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.MswDebugIsWriteFile.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MswDebugIsWriteFile.Name = "MswDebugIsWriteFile";
+            this.MswDebugIsWriteFile.Ripple = true;
+            this.MswDebugIsWriteFile.Size = new System.Drawing.Size(123, 37);
+            this.MswDebugIsWriteFile.TabIndex = 188;
+            this.MswDebugIsWriteFile.Text = "Write File";
+            this.MswDebugIsWriteFile.UseVisualStyleBackColor = true;
+            this.MswDebugIsWriteFile.CheckedChanged += new System.EventHandler(this.MswDebugIsWriteFile_CheckedChanged);
+            // 
+            // MtbDebugMaxLines
+            // 
+            this.MtbDebugMaxLines.AnimateReadOnly = false;
+            this.MtbDebugMaxLines.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MtbDebugMaxLines.Depth = 0;
+            this.MtbDebugMaxLines.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.MtbDebugMaxLines.Hint = "Max Lines";
+            this.MtbDebugMaxLines.LeadingIcon = null;
+            this.MtbDebugMaxLines.Location = new System.Drawing.Point(7, 65);
+            this.MtbDebugMaxLines.MaxLength = 4;
+            this.MtbDebugMaxLines.MouseState = MaterialSkin.MouseState.OUT;
+            this.MtbDebugMaxLines.Multiline = false;
+            this.MtbDebugMaxLines.Name = "MtbDebugMaxLines";
+            this.MtbDebugMaxLines.Size = new System.Drawing.Size(108, 50);
+            this.MtbDebugMaxLines.TabIndex = 187;
+            this.MtbDebugMaxLines.Text = "100";
+            this.MtbDebugMaxLines.TrailingIcon = null;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(62, 7);
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(74, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 21);
+            this.label1.Size = new System.Drawing.Size(96, 17);
             this.label1.TabIndex = 186;
             this.label1.Text = "디버그 창 제어";
             // 
@@ -758,7 +796,7 @@
             // 
             this.MswDebugIsAscii.AutoSize = true;
             this.MswDebugIsAscii.Depth = 0;
-            this.MswDebugIsAscii.Location = new System.Drawing.Point(6, 35);
+            this.MswDebugIsAscii.Location = new System.Drawing.Point(149, 25);
             this.MswDebugIsAscii.Margin = new System.Windows.Forms.Padding(0);
             this.MswDebugIsAscii.MouseLocation = new System.Drawing.Point(-1, -1);
             this.MswDebugIsAscii.MouseState = MaterialSkin.MouseState.HOVER;
@@ -778,12 +816,12 @@
             this.MbtnDebugClear.Depth = 0;
             this.MbtnDebugClear.HighEmphasis = true;
             this.MbtnDebugClear.Icon = null;
-            this.MbtnDebugClear.Location = new System.Drawing.Point(137, 35);
+            this.MbtnDebugClear.Location = new System.Drawing.Point(123, 72);
             this.MbtnDebugClear.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.MbtnDebugClear.MouseState = MaterialSkin.MouseState.HOVER;
             this.MbtnDebugClear.Name = "MbtnDebugClear";
             this.MbtnDebugClear.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.MbtnDebugClear.Size = new System.Drawing.Size(100, 36);
+            this.MbtnDebugClear.Size = new System.Drawing.Size(114, 36);
             this.MbtnDebugClear.TabIndex = 185;
             this.MbtnDebugClear.Text = "CLEAR";
             this.MbtnDebugClear.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -831,9 +869,9 @@
             // 
             // pHeader
             // 
+            this.pHeader.Controls.Add(this.mlbProjectTitle);
             this.pHeader.Controls.Add(this.materialDivider1);
             this.pHeader.Controls.Add(this.mDividerTop);
-            this.pHeader.Controls.Add(this.label2);
             this.pHeader.Controls.Add(this.BtnClose);
             this.pHeader.Location = new System.Drawing.Point(0, 0);
             this.pHeader.Name = "pHeader";
@@ -841,29 +879,16 @@
             this.pHeader.TabIndex = 187;
             this.pHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTOP_MouseDown);
             // 
-            // BtnClose
+            // materialDivider1
             // 
-            this.BtnClose.BackgroundImage = global::CommTest.Properties.Resources.close;
-            this.BtnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnClose.FlatAppearance.BorderSize = 0;
-            this.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnClose.Location = new System.Drawing.Point(957, 5);
-            this.BtnClose.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnClose.Name = "BtnClose";
-            this.BtnClose.Size = new System.Drawing.Size(20, 20);
-            this.BtnClose.TabIndex = 186;
-            this.BtnClose.UseVisualStyleBackColor = true;
-            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(10, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(204, 20);
-            this.label2.TabIndex = 187;
-            this.label2.Text = "시리얼 통신 테스트 프로그램";
+            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider1.Depth = 0;
+            this.materialDivider1.Location = new System.Drawing.Point(0, 0);
+            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider1.Name = "materialDivider1";
+            this.materialDivider1.Size = new System.Drawing.Size(4096, 1);
+            this.materialDivider1.TabIndex = 189;
+            this.materialDivider1.Text = "materialDivider4";
             // 
             // mDividerTop
             // 
@@ -876,16 +901,33 @@
             this.mDividerTop.TabIndex = 188;
             this.mDividerTop.Text = "materialDivider4";
             // 
-            // materialDivider1
+            // BtnClose
             // 
-            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(0, 0);
-            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(4096, 1);
-            this.materialDivider1.TabIndex = 189;
-            this.materialDivider1.Text = "materialDivider4";
+            this.BtnClose.BackgroundImage = global::CommTest.Properties.Resources.Close_Red;
+            this.BtnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnClose.FlatAppearance.BorderSize = 0;
+            this.BtnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnClose.Location = new System.Drawing.Point(957, 5);
+            this.BtnClose.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnClose.Name = "BtnClose";
+            this.BtnClose.Size = new System.Drawing.Size(20, 20);
+            this.BtnClose.TabIndex = 186;
+            this.BtnClose.UseVisualStyleBackColor = true;
+            this.BtnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            // 
+            // mlbProjectTitle
+            // 
+            this.mlbProjectTitle.AutoSize = true;
+            this.mlbProjectTitle.Depth = 0;
+            this.mlbProjectTitle.Font = new System.Drawing.Font("Roboto Medium", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.mlbProjectTitle.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            this.mlbProjectTitle.Location = new System.Drawing.Point(10, 3);
+            this.mlbProjectTitle.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mlbProjectTitle.Name = "mlbProjectTitle";
+            this.mlbProjectTitle.Size = new System.Drawing.Size(202, 24);
+            this.mlbProjectTitle.TabIndex = 190;
+            this.mlbProjectTitle.Text = "Serial 통신 테스트 프로그램";
+            this.mlbProjectTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTOP_MouseDown);
             // 
             // SerialPage
             // 
@@ -906,7 +948,7 @@
             this.Name = "SerialPage";
             this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "SerialPage";
+            this.Text = "Serial 통신 테스트 프로그램";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SerialPage_FormClosing);
             this.Load += new System.EventHandler(this.SerialPage_Load);
             this.materialCard1.ResumeLayout(false);
@@ -964,8 +1006,10 @@
         private System.Windows.Forms.Panel pBody;
         private System.Windows.Forms.Panel pHeader;
         private System.Windows.Forms.Button BtnClose;
-        private System.Windows.Forms.Label label2;
         private MaterialSkin.Controls.MaterialDivider mDividerTop;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
+        private MaterialSkin.Controls.MaterialTextBox MtbDebugMaxLines;
+        private MaterialSkin.Controls.MaterialSwitch MswDebugIsWriteFile;
+        private MaterialSkin.Controls.MaterialLabel mlbProjectTitle;
     }
 }

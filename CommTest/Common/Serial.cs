@@ -16,6 +16,18 @@ namespace CommTest
         private System.Collections.Concurrent.ConcurrentQueue<byte> RxBuffer = new System.Collections.Concurrent.ConcurrentQueue<byte>();
         private SerialPort _serialPort = new SerialPort();
 
+        public int BaudRate
+        {
+            get => _serialPort.BaudRate;
+            set => _serialPort.BaudRate = value;
+        }
+
+        public string PortName
+        {
+            get => _serialPort.PortName;
+            set => _serialPort.PortName = value;
+        }
+
         /// <summary>
         /// 송수신 패킷을 ASCII로 출력할지 여부. false이면 HEX로 출력
         /// </summary>
@@ -23,7 +35,6 @@ namespace CommTest
 
         public Serial()
         {
-            _serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(RxEvent);
         }
 
         /// <summary>
@@ -33,7 +44,6 @@ namespace CommTest
         /// <param name="BaudRate">속도</param>
         public Serial(string PortName, int BaudRate)
         {
-            _serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(RxEvent);
             Connect(PortName, BaudRate);
         }
 
@@ -44,6 +54,7 @@ namespace CommTest
 
             try
             {
+                _serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(RxEvent);
                 _serialPort.Open();
                 PrintDebugMsg($"{_serialPort.PortName} {_serialPort.BaudRate} Serial Port Open");
                 return true;

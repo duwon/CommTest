@@ -75,12 +75,6 @@ namespace CommTest
             }
         }
 
-        ~LogMessage()
-        {
-            tLogMessge.Abort();
-            tLogMessge.Join();
-        }
-
         /// <summary>
         /// 파일에 로그 메시지 쓰기
         /// </summary>
@@ -191,7 +185,7 @@ namespace CommTest
         /// <summary>
         /// 텍스트 박스의 최대 라인 수. 0이면 무제한
         /// </summary>
-        public int nLimitLines { set; get; } = 1000;
+        public int LimitLines { set; get; } = 1000;
 
         /// <summary>
         /// 사용자가 화면 출력을 일시 정지 선택, true 출력, false 정지
@@ -245,7 +239,7 @@ namespace CommTest
                 }
                 catch { }
             }
-            else if (nLimitLines == 0)
+            else if (LimitLines == 0)
             {
                 try
                 {
@@ -259,11 +253,11 @@ namespace CommTest
                 {
                     tbDebugText.AppendText(message);
 
-                    if (tbDebugText.Lines.Length > nLimitLines)
+                    if (tbDebugText.Lines.Length > LimitLines)
                     {
                         LinkedList<string> tempLines = new LinkedList<string>(tbDebugText.Lines);
 
-                        while ((tempLines.Count - nLimitLines) > 0)
+                        while ((tempLines.Count - LimitLines) > 0)
                         {
                             tempLines.RemoveFirst();
                         }
@@ -282,8 +276,8 @@ namespace CommTest
         /// </summary>
         public new void Close()
         {
-            base.Close();
             debugMessage.Close();
+            base.Close();
         }
 
         /// <summary>
