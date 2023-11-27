@@ -38,10 +38,16 @@
             this.mDividerTop = new MaterialSkin.Controls.MaterialDivider();
             this.MTabControl = new MaterialSkin.Controls.MaterialTabControl();
             this.tabMain = new System.Windows.Forms.TabPage();
+            this.mtbDebug = new MaterialSkin.Controls.MaterialMultiLineTextBox();
+            this.MbtnOpenUdp = new MaterialSkin.Controls.MaterialButton();
+            this.MbtnOpenSerial = new MaterialSkin.Controls.MaterialButton();
             this.tabSerial = new System.Windows.Forms.TabPage();
+            this.tabUdp = new System.Windows.Forms.TabPage();
+            this.tabTcp = new System.Windows.Forms.TabPage();
             this.tabConfig = new System.Windows.Forms.TabPage();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.MbtnOpenSerial = new MaterialSkin.Controls.MaterialButton();
+            this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.MbtnOpenTcp = new MaterialSkin.Controls.MaterialButton();
             this.MTabControl.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.SuspendLayout();
@@ -148,6 +154,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MTabControl.Controls.Add(this.tabMain);
             this.MTabControl.Controls.Add(this.tabSerial);
+            this.MTabControl.Controls.Add(this.tabUdp);
+            this.MTabControl.Controls.Add(this.tabTcp);
             this.MTabControl.Controls.Add(this.tabConfig);
             this.MTabControl.Depth = 0;
             this.MTabControl.ImageList = this.imageList1;
@@ -161,6 +169,11 @@
             // 
             // tabMain
             // 
+            this.tabMain.BackColor = System.Drawing.SystemColors.Control;
+            this.tabMain.Controls.Add(this.MbtnOpenTcp);
+            this.tabMain.Controls.Add(this.materialTabSelector1);
+            this.tabMain.Controls.Add(this.mtbDebug);
+            this.tabMain.Controls.Add(this.MbtnOpenUdp);
             this.tabMain.Controls.Add(this.MbtnOpenSerial);
             this.tabMain.ImageKey = "main-menu.png";
             this.tabMain.Location = new System.Drawing.Point(4, 24);
@@ -169,11 +182,65 @@
             this.tabMain.Size = new System.Drawing.Size(1034, 670);
             this.tabMain.TabIndex = 0;
             this.tabMain.Text = "Main";
-            this.tabMain.UseVisualStyleBackColor = true;
+            // 
+            // mtbDebug
+            // 
+            this.mtbDebug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.mtbDebug.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mtbDebug.Depth = 0;
+            this.mtbDebug.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.mtbDebug.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mtbDebug.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.mtbDebug.Location = new System.Drawing.Point(3, 179);
+            this.mtbDebug.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mtbDebug.Name = "mtbDebug";
+            this.mtbDebug.Size = new System.Drawing.Size(1028, 488);
+            this.mtbDebug.TabIndex = 176;
+            this.mtbDebug.Text = "";
+            // 
+            // MbtnOpenUdp
+            // 
+            this.MbtnOpenUdp.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MbtnOpenUdp.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.MbtnOpenUdp.Depth = 0;
+            this.MbtnOpenUdp.HighEmphasis = true;
+            this.MbtnOpenUdp.Icon = null;
+            this.MbtnOpenUdp.Location = new System.Drawing.Point(397, 63);
+            this.MbtnOpenUdp.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.MbtnOpenUdp.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MbtnOpenUdp.Name = "MbtnOpenUdp";
+            this.MbtnOpenUdp.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.MbtnOpenUdp.Size = new System.Drawing.Size(64, 36);
+            this.MbtnOpenUdp.TabIndex = 12;
+            this.MbtnOpenUdp.Text = "UDP";
+            this.MbtnOpenUdp.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.MbtnOpenUdp.UseAccentColor = false;
+            this.MbtnOpenUdp.UseVisualStyleBackColor = true;
+            this.MbtnOpenUdp.Click += new System.EventHandler(this.MbtnOpenUdp_Click);
+            // 
+            // MbtnOpenSerial
+            // 
+            this.MbtnOpenSerial.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MbtnOpenSerial.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.MbtnOpenSerial.Depth = 0;
+            this.MbtnOpenSerial.HighEmphasis = true;
+            this.MbtnOpenSerial.Icon = null;
+            this.MbtnOpenSerial.Location = new System.Drawing.Point(230, 63);
+            this.MbtnOpenSerial.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.MbtnOpenSerial.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MbtnOpenSerial.Name = "MbtnOpenSerial";
+            this.MbtnOpenSerial.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.MbtnOpenSerial.Size = new System.Drawing.Size(70, 36);
+            this.MbtnOpenSerial.TabIndex = 1;
+            this.MbtnOpenSerial.Text = "Serial";
+            this.MbtnOpenSerial.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.MbtnOpenSerial.UseAccentColor = false;
+            this.MbtnOpenSerial.UseVisualStyleBackColor = true;
+            this.MbtnOpenSerial.Click += new System.EventHandler(this.MbtnOpenSerial_Click);
             // 
             // tabSerial
             // 
-            this.tabSerial.ImageKey = "serialport.png";
+            this.tabSerial.ImageKey = "ico_serial.png";
             this.tabSerial.Location = new System.Drawing.Point(4, 24);
             this.tabSerial.Name = "tabSerial";
             this.tabSerial.Padding = new System.Windows.Forms.Padding(3);
@@ -181,9 +248,31 @@
             this.tabSerial.TabIndex = 1;
             this.tabSerial.Text = "Serial";
             // 
+            // tabUdp
+            // 
+            this.tabUdp.ImageKey = "ico_udp.png";
+            this.tabUdp.Location = new System.Drawing.Point(4, 24);
+            this.tabUdp.Name = "tabUdp";
+            this.tabUdp.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUdp.Size = new System.Drawing.Size(1034, 670);
+            this.tabUdp.TabIndex = 3;
+            this.tabUdp.Text = "UDP";
+            this.tabUdp.UseVisualStyleBackColor = true;
+            // 
+            // tabTcp
+            // 
+            this.tabTcp.ImageKey = "ico_tcp.png";
+            this.tabTcp.Location = new System.Drawing.Point(4, 24);
+            this.tabTcp.Name = "tabTcp";
+            this.tabTcp.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTcp.Size = new System.Drawing.Size(1034, 670);
+            this.tabTcp.TabIndex = 4;
+            this.tabTcp.Text = "TCP";
+            this.tabTcp.UseVisualStyleBackColor = true;
+            // 
             // tabConfig
             // 
-            this.tabConfig.ImageKey = "setting.png";
+            this.tabConfig.ImageKey = "ico_gear.png";
             this.tabConfig.Location = new System.Drawing.Point(4, 24);
             this.tabConfig.Name = "tabConfig";
             this.tabConfig.Padding = new System.Windows.Forms.Padding(3);
@@ -198,26 +287,43 @@
             this.imageList1.Images.SetKeyName(0, "main-menu.png");
             this.imageList1.Images.SetKeyName(1, "serialport.png");
             this.imageList1.Images.SetKeyName(2, "setting.png");
+            this.imageList1.Images.SetKeyName(3, "ico_serial.png");
+            this.imageList1.Images.SetKeyName(4, "ico_gear.png");
+            this.imageList1.Images.SetKeyName(5, "ico_tcp.png");
+            this.imageList1.Images.SetKeyName(6, "ico_udp.png");
             // 
-            // MbtnOpenSerial
+            // materialTabSelector1
             // 
-            this.MbtnOpenSerial.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.MbtnOpenSerial.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.MbtnOpenSerial.Depth = 0;
-            this.MbtnOpenSerial.HighEmphasis = true;
-            this.MbtnOpenSerial.Icon = null;
-            this.MbtnOpenSerial.Location = new System.Drawing.Point(720, 141);
-            this.MbtnOpenSerial.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.MbtnOpenSerial.MouseState = MaterialSkin.MouseState.HOVER;
-            this.MbtnOpenSerial.Name = "MbtnOpenSerial";
-            this.MbtnOpenSerial.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.MbtnOpenSerial.Size = new System.Drawing.Size(70, 36);
-            this.MbtnOpenSerial.TabIndex = 1;
-            this.MbtnOpenSerial.Text = "Serial";
-            this.MbtnOpenSerial.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.MbtnOpenSerial.UseAccentColor = false;
-            this.MbtnOpenSerial.UseVisualStyleBackColor = true;
-            this.MbtnOpenSerial.Click += new System.EventHandler(this.MbtnOpenSerial_Click);
+            this.materialTabSelector1.BaseTabControl = this.MTabControl;
+            this.materialTabSelector1.CharacterCasing = MaterialSkin.Controls.MaterialTabSelector.CustomCharacterCasing.Normal;
+            this.materialTabSelector1.Depth = 0;
+            this.materialTabSelector1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialTabSelector1.Location = new System.Drawing.Point(6, 6);
+            this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialTabSelector1.Name = "materialTabSelector1";
+            this.materialTabSelector1.Size = new System.Drawing.Size(1022, 48);
+            this.materialTabSelector1.TabIndex = 177;
+            this.materialTabSelector1.Text = "materialTabSelector1";
+            // 
+            // MbtnOpenTcp
+            // 
+            this.MbtnOpenTcp.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.MbtnOpenTcp.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.MbtnOpenTcp.Depth = 0;
+            this.MbtnOpenTcp.HighEmphasis = true;
+            this.MbtnOpenTcp.Icon = null;
+            this.MbtnOpenTcp.Location = new System.Drawing.Point(553, 63);
+            this.MbtnOpenTcp.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.MbtnOpenTcp.MouseState = MaterialSkin.MouseState.HOVER;
+            this.MbtnOpenTcp.Name = "MbtnOpenTcp";
+            this.MbtnOpenTcp.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.MbtnOpenTcp.Size = new System.Drawing.Size(64, 36);
+            this.MbtnOpenTcp.TabIndex = 178;
+            this.MbtnOpenTcp.Text = "TCP";
+            this.MbtnOpenTcp.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.MbtnOpenTcp.UseAccentColor = false;
+            this.MbtnOpenTcp.UseVisualStyleBackColor = true;
+            this.MbtnOpenTcp.Click += new System.EventHandler(this.MbtnOpenTcp_Click);
             // 
             // Main
             // 
@@ -239,7 +345,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Main";
             this.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.Text = "CommTest";
+            this.Text = "통신 테스트 프로그램";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.MTabControl.ResumeLayout(false);
@@ -264,6 +370,12 @@
         private System.Windows.Forms.TabPage tabConfig;
         private System.Windows.Forms.ImageList imageList1;
         private MaterialSkin.Controls.MaterialButton MbtnOpenSerial;
+        private MaterialSkin.Controls.MaterialButton MbtnOpenUdp;
+        private System.Windows.Forms.TabPage tabUdp;
+        private System.Windows.Forms.TabPage tabTcp;
+        private MaterialSkin.Controls.MaterialMultiLineTextBox mtbDebug;
+        private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
+        private MaterialSkin.Controls.MaterialButton MbtnOpenTcp;
     }
 }
 

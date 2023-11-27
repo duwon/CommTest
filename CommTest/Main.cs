@@ -1,6 +1,7 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace CommTest
@@ -21,6 +22,21 @@ namespace CommTest
         /// 폼 - 시리얼 테스트 페이지
         /// </summary>
         private SerialPage FormSerial { get; set; }
+
+        /// <summary>
+        /// 폼 - UDP 테스트 페이지
+        /// </summary>
+        private UdpPage FormUdp { get; set; }
+
+        /// <summary>
+        /// 폼 - TCP 테스트 페이지
+        /// </summary>
+        private TcpPage FormTcp { get; set; }
+
+        /// <summary>
+        /// 로그 출력 Class
+        /// </summary>
+        LogTextBox Log;
 
         public Main()
         {
@@ -44,15 +60,40 @@ namespace CommTest
             MaximumSize = new System.Drawing.Size(1048, 760);
             MinimumSize = new System.Drawing.Size(1048, 760);
 
+            //GUI 버전 표시
+            string guiVerison = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).ProductVersion; // AssemblyInformationalVersion
+            mtbVersionGUI.Text = guiVerison;
+
+            //빌드 시간 표시
+            Utils util = new Utils();
+            PrintDebugMsg($"Communication Test Program {guiVerison} \r\nBuild Date: {util.Get_BuildDateTime()}\r\n");
+
+            // 로그 설정
+            Log = new LogTextBox(mtbDebug);
+            // MtbDebugMaxLines.TextChanged += new System.EventHandler(MtbDebugMaxLines_TextChanged);
+            Log.IsWiteFile = false;
+
             // 서브 폼 로드
             // 시리얼 테스트 페이지
-            FormSerial = new SerialPage() { TopLevel = false, IsLayoutHeader = false };
+            FormSerial = new SerialPage() { TopLevel = false, StartPosition = FormStartPosition.Manual, IsLayoutHeader = false };
             FormSerial.DebugMessageEvent += new SerialPage.DebugMessageHandler(PrintDebugMsg);
             tabSerial.Controls.Add(FormSerial);
             FormSerial.Show();
 
+            // UDP 테스트 페이지
+            FormUdp = new UdpPage() { TopLevel = false, Location = new System.Drawing.Point(0,0), IsLayoutHeader = false };
+            FormUdp.DebugMessageEvent += new UdpPage.DebugMessageHandler(PrintDebugMsg);
+            tabUdp.Controls.Add(FormUdp);
+            FormUdp.Show();
+
+            // TCP 테스트 페이지
+            FormTcp = new TcpPage() { TopLevel = false, Location = new System.Drawing.Point(0, 0), IsLayoutHeader = false };
+            FormTcp.DebugMessageEvent += new TcpPage.DebugMessageHandler(PrintDebugMsg);
+            tabTcp.Controls.Add(FormTcp);
+            FormTcp.Show();
+
             // 설정 페이지
-            FormConfig = new ConfigPage() { TopLevel = false };
+            FormConfig = new ConfigPage() { TopLevel = false, StartPosition = FormStartPosition.Manual};
             FormConfig.DebugMessageEvent += new ConfigPage.DebugMessageHandler(PrintDebugMsg);
             tabConfig.Controls.Add(FormConfig);
             FormConfig.Show();
@@ -68,6 +109,9 @@ namespace CommTest
         {
             // 서브 폼 종료
             FormConfig.Close();
+
+            // 로그 파일 종료
+            Log.Close();
         }
 
         /// <summary>
@@ -107,11 +151,18 @@ namespace CommTest
             new MaterialSnackBar($"{mswThemaMode.Text} mode selected.", 1000, "OK", true).Show(this); // MaterialSnackBar를 생성하여 "Light mode selected." 또는 "Dark mode selected." 메시지를 1초 동안 보여줌
         }
 
+        private void PrintDebugMsg(string msg)
+        {
+            mtbDebug.Text += msg;
+            // Log?.Write(msg, true);
+        }
+
         private void PrintDebugMsg(string msg, bool IsVisible)
         {
             if (IsVisible)
             {
-                //mlbDebugMsg.Text = msg;
+                // mtbDebug.Text += msg;
+                Log.Write(msg, IsVisible);
             }
             else
             {
@@ -124,6 +175,20 @@ namespace CommTest
             SerialPage _SerialForm = new SerialPage() { IsLayoutHeader = true, StartPosition = FormStartPosition.WindowsDefaultLocation};
             _SerialForm.DebugMessageEvent += new SerialPage.DebugMessageHandler(PrintDebugMsg);
             _SerialForm.Show();
+        }
+
+        private void MbtnOpenUdp_Click(object sender, EventArgs e)
+        {
+            UdpPage _UdpForm = new UdpPage() { IsLayoutHeader = true, StartPosition = FormStartPosition.WindowsDefaultLocation };
+            _UdpForm.DebugMessageEvent += new UdpPage.DebugMessageHandler(PrintDebugMsg);
+            _UdpForm.Show();
+        }
+
+        private void MbtnOpenTcp_Click(object sender, EventArgs e)
+        {
+            TcpPage _TcpForm = new TcpPage() { IsLayoutHeader = true, StartPosition = FormStartPosition.WindowsDefaultLocation };
+            _TcpForm.DebugMessageEvent += new TcpPage.DebugMessageHandler(PrintDebugMsg);
+            _TcpForm.Show();
         }
     }
 }

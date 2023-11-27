@@ -11,7 +11,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
+    <Deterministic>false</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>게시\</PublishUrl>
     <Install>true</Install>
@@ -81,6 +81,9 @@
   <ItemGroup>
     <Compile Include="Common\LogMessage.cs" />
     <Compile Include="Common\Serial.cs" />
+    <Compile Include="Common\TCP.cs" />
+    <Compile Include="Common\UDP.cs" />
+    <Compile Include="Common\Utils.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +103,18 @@
     </Compile>
     <Compile Include="Serial\SerialPage.Designer.cs">
       <DependentUpon>SerialPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TCP\TcpPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TCP\TcpPage.Designer.cs">
+      <DependentUpon>TcpPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UDP\UdpPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UDP\UdpPage.Designer.cs">
+      <DependentUpon>UdpPage.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
@@ -121,6 +136,12 @@
     <EmbeddedResource Include="Serial\SerialPage.resx">
       <DependentUpon>SerialPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TCP\TcpPage.resx">
+      <DependentUpon>TcpPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UDP\UdpPage.resx">
+      <DependentUpon>UdpPage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="CommTest_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -137,8 +158,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TCP\" />
-    <Folder Include="UDP\" />
+    <ProjectReference Include="..\SuperSimpleTcp\SuperSimpleTcp.csproj">
+      <Project>{ec41b4a8-5f69-42f0-a8fb-e53c6fd2337a}</Project>
+      <Name>SuperSimpleTcp</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -154,6 +177,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\Close_Red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\ico_udp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
